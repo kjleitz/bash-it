@@ -1,7 +1,7 @@
 # shellcheck shell=bash
 
 # Brainy Bash Prompt for Bash-it
-# by Keegan Leitz (adapted ALMOST ENTIRELY from 'brainy' theme by MunifTanjim)
+# by MunifTanjim
 
 #############
 ## Parsers ##
@@ -123,15 +123,6 @@ ___brainy_prompt_python() {
 	color=$bold_yellow
 	box="[|]"
 	info="$(python_version_prompt)"
-	printf "%s|%s|%s|%s" "${color}" "${info}" "${bold_blue}" "${box}"
-}
-
-___brainy_prompt_venv() {
-	[ "${THEME_SHOW_VENV}" != "true" ] ||
-	[ "${VIRTUAL_ENV}" == "" ] && return
-	color=$bold_yellow
-	box="[|]"
-	info="$(virtualenv_prompt)"
 	printf "%s|%s|%s|%s" "${color}" "${info}" "${bold_blue}" "${box}"
 }
 
@@ -270,9 +261,8 @@ export SCM_THEME_PROMPT_CLEAN=" ${bold_green}✓${normal}"
 
 THEME_SHOW_SUDO=${THEME_SHOW_SUDO:-"true"}
 THEME_SHOW_SCM=${THEME_SHOW_SCM:-"true"}
-THEME_SHOW_RUBY=${THEME_SHOW_RUBY:-"true"}
+THEME_SHOW_RUBY=${THEME_SHOW_RUBY:-"false"}
 THEME_SHOW_PYTHON=${THEME_SHOW_PYTHON:-"false"}
-THEME_SHOW_VENV=${THEME_SHOW_VENV:-"true"}
 THEME_SHOW_CLOCK=${THEME_SHOW_CLOCK:-"true"}
 THEME_SHOW_TODO=${THEME_SHOW_TODO:-"false"}
 THEME_SHOW_BATTERY=${THEME_SHOW_BATTERY:-"false"}
@@ -285,7 +275,7 @@ __BRAINY_PROMPT_CHAR_PS1=${THEME_PROMPT_CHAR_PS1:-">"}
 __BRAINY_PROMPT_CHAR_PS2=${THEME_PROMPT_CHAR_PS2:-"\\"}
 
 ___BRAINY_TOP_LEFT=${___BRAINY_TOP_LEFT:-"user_info dir scm"}
-___BRAINY_TOP_RIGHT=${___BRAINY_TOP_RIGHT:-"python ruby venv todo clock battery"}
+___BRAINY_TOP_RIGHT=${___BRAINY_TOP_RIGHT:-"python ruby todo clock battery"}
 ___BRAINY_BOTTOM=${___BRAINY_BOTTOM:-"exitcode char"}
 
 ############
